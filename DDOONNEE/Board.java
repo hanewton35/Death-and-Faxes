@@ -129,6 +129,7 @@ public class Board
                 }
             }
         }
+        check();
         building = false;
     }
     
@@ -153,7 +154,6 @@ public class Board
     
     public void run()
     {
-        check();
         String c = sc.next();
         if(c.equals("w") && getYou().getRow() != 0 && board[getYou().getRow()-1][getYou().getCol()] instanceof Empty)
         {

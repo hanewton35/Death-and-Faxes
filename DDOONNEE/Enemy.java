@@ -45,7 +45,6 @@ public class Enemy extends MovObj
                 else
                     hunt();
             }
-            board.check();
             timer--;
         }
         return false;
