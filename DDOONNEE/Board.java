@@ -1,5 +1,6 @@
 import java.util.*;
 import java.lang.*;
+import java.util.InputMismatchException;
 
 public class Board
 {
@@ -92,11 +93,17 @@ public class Board
             double e = arr.get(i);
             if(e < .5)
             {
-                System.out.println("WALL");
-                System.out.print("ENTER ROW FOR PLACEMENT");
-                int c = sc.nextInt()-1;
-                System.out.print("ENTER COLUMN FOR PLACEMENT");
-                int d = sc.nextInt()-1;
+                int c = -1;
+                int d = board.length;
+                try
+                {
+                    System.out.println("WALL");
+                    System.out.print("ENTER ROW FOR PLACEMENT");
+                    c = Integer.parseInt(sc.next())-1;
+                    System.out.print("ENTER COLUMN FOR PLACEMENT");
+                    d = Integer.parseInt(sc.next())-1;
+                }
+                catch(Exception a){}
                 if(-1 < c && c < board.length && -1 < d && d < board.length && board[c][d] instanceof Empty)
                 {
                     place(new Wall(this, c, d), c, d);
@@ -111,11 +118,17 @@ public class Board
             }
             else 
             {
-                System.out.println("GLASS");
-                System.out.print("ENTER ROW FOR PLACEMENT");
-                int c = sc.nextInt()-1;
-                System.out.print("ENTER COLUMN FOR PLACEMENT");
-                int d = sc.nextInt()-1;
+                int c = -1;
+                int d = board.length;
+                try
+                {
+                    System.out.println("GLASS");
+                    System.out.print("ENTER ROW FOR PLACEMENT");
+                    c = Integer.parseInt(sc.next())-1;
+                    System.out.print("ENTER COLUMN FOR PLACEMENT");
+                    d = Integer.parseInt(sc.next())-1;
+                }
+                catch(Exception a){}
                 if(-1 < c && c < board.length && -1 < d && d < board.length && board[c][d] instanceof Empty)
                 {
                     place(new Glass(this, c, d), c, d);

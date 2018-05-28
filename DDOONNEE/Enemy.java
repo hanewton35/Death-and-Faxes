@@ -11,6 +11,10 @@ public class Enemy extends MovObj
     public boolean hunt()
     {
         board.check(); 
+        if(board.end != -1)
+        {
+            return false;
+        }
         if(board.getYou() != null && board.getYou().eVis)
         {
             timer = 2; 

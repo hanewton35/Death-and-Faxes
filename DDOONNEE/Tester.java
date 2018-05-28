@@ -1,11 +1,4 @@
 import java.util.*;
-import java.awt.Container;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 
 public class Tester
 {
@@ -16,9 +9,15 @@ public class Tester
         int a = 0; 
         while(a < 5)
         {
-            a = sc.nextInt();
+            try
+            {
+                a = Integer.parseInt(sc.next());
+            }
+            catch(Exception p){}
             if(a < 5)
             {
+                System.out.print("\u000C");
+                System.out.println("INVALID SIZE");
                 System.out.println("BOARD SIZE (GREATER THAN 4):");
             }
         }

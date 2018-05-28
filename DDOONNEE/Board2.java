@@ -187,11 +187,17 @@ public class Board2
             double e = arr.get(i);
             if(e < .5)
             {
-                System.out.println("WALL");
-                System.out.print("ENTER ROW FOR PLACEMENT");
-                int c = sc.nextInt()-1;
-                System.out.print("ENTER COLUMN FOR PLACEMENT");
-                int d = sc.nextInt()-1;
+                int c = -1;
+                int d = board.length;
+                try
+                {
+                    System.out.println("WALL");
+                    System.out.print("ENTER ROW FOR PLACEMENT");
+                    c = Integer.parseInt(sc.next())-1;
+                    System.out.print("ENTER COLUMN FOR PLACEMENT");
+                    d = Integer.parseInt(sc.next())-1;
+                }
+                catch(Exception a){}
                 if(-1 < c && c < board.length+1 && -1 < d && d < board.length+1 && !(c == 0 && d == 0) && !(c == board.length-1 && d == 0) && !(c == 0 && d == board.length-1) && !(c == board.length-1 && d == board.length-1) && board[c][d] instanceof Empty2)
                 {
                     place(new Wall2(this, c, d), c, d);
@@ -206,11 +212,17 @@ public class Board2
             }
             else 
             {
-                System.out.println("GLASS");
-                System.out.print("ENTER ROW FOR PLACEMENT");
-                int c = sc.nextInt()-1;
-                System.out.print("ENTER COLUMN FOR PLACEMENT");
-                int d = sc.nextInt()-1;
+                int c = -1;
+                int d = board.length;
+                try
+                {
+                    System.out.println("GLASS");
+                    System.out.print("ENTER ROW FOR PLACEMENT");
+                    c = Integer.parseInt(sc.next())-1;
+                    System.out.print("ENTER COLUMN FOR PLACEMENT");
+                    d = Integer.parseInt(sc.next())-1;
+                }
+                catch(Exception a){}
                 if(-1 < c && c < board.length+1 && -1 < d && d < board.length+1 && !(c == 0 && d == 0) && !(c == board.length-1 && d == 0) && !(c == 0 && d == board.length-1) && !(c == board.length-1 && d == board.length-1) && board[c][d] instanceof Empty2)
                 {
                     place(new Glass2(this, c, d), c, d);
@@ -294,6 +306,9 @@ public class Board2
         {
             for(int i = 0; i < board.length/3; i++)
             {
+                if(end != -1)
+                    i = board.length/4;
+                else{
                 System.out.print("\u000C");
                 System.out.print("MOVES LEFT: " + (board.length/3-i));
                 System.out.print(this);
@@ -326,13 +341,16 @@ public class Board2
                         i = board.length;
                     }
                 }
-                check();
+                check();}
             }
         }
         else
         {
             for(int i = 0; i < board.length/4; i++)
             {
+                if(end != -1)
+                    i = board.length/4;
+                else{
                 System.out.print("\u000C");
                 System.out.print("MOVES LEFT: " + (board.length/4-i));
                 System.out.print(this);
@@ -365,12 +383,12 @@ public class Board2
                         i = board.length;
                     }
                 }
-                check();
+                check();}
             }
         }
         System.out.print("\u000C");
         System.out.print(this);
-    }
+    }   
     
     public void end(boolean p)
     {
