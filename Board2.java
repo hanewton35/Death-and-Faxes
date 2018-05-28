@@ -9,6 +9,7 @@ public class Board2
     int oRow;
     int oCol;
     int end = -1; 
+    boolean building;
     
     public Board2(int size)
     {
@@ -172,6 +173,7 @@ public class Board2
     
     public void build()
     {
+        building = true;
         System.out.println("OBJECTIVE: " + (oRow+1) + ", " + (oCol+1));
         ArrayList<Double> arr = new ArrayList<Double>();
         for(int i = 0; i < board.length/2; i++)
@@ -222,6 +224,7 @@ public class Board2
                 }
             }
         }
+        building = false;
     }
     
     public void run()
@@ -421,7 +424,12 @@ public class Board2
                 str += i+1 + " ";
             for(int j = 0; j < board[0].length; j++)
             { 
-                str += board[i][j] + "  ";
+                if(board[i][j].toString().equals("🚶‍"))
+                    str += board[i][j] + "   ";
+                else if(board[i][j].toString().equals("📠"))
+                    str += board[i][j] + "  ";
+                else
+                    str += board[i][j] + "  ";
             }
             str += "\n";
         }

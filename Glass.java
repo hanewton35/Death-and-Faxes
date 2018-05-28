@@ -7,6 +7,8 @@ public class Glass extends EmpOrGla
     
     public String toString()
     {
-        return "□";
+        if(super.yVis || board.building)
+            return "□";
+        return "*";
     }
 }

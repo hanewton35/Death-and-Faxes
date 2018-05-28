@@ -7,6 +7,8 @@ public class Wall extends Obj
     
     public String toString()
     {
-        return "█";
+        if(super.yVis || board.building)
+            return "█";
+        return "*";
     }
 }

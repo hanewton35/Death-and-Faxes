@@ -6,6 +6,7 @@ public class Board
     Obj[][] board;
     Scanner sc = new Scanner(System.in);
     int end = -1; 
+    boolean building;
     
     public Board(int size)
     {
@@ -78,6 +79,7 @@ public class Board
     
     public void build()
     {
+        building = true;
         ArrayList<Double> arr = new ArrayList<Double>();
         for(int i = 0; i < board.length/2; i++)
         {
@@ -127,6 +129,7 @@ public class Board
                 }
             }
         }
+        building = false;
     }
     
     public void start()
@@ -281,8 +284,10 @@ public class Board
                 str += i+1 + " ";
             for(int j = 0; j < board[0].length; j++)
             { 
-                if(board[i][j].toString().equals("🚶‍") || board[i][j].toString().equals("📠"))
+                if(board[i][j].toString().equals("🚶‍"))
                     str += board[i][j] + "   ";
+                else if(board[i][j].toString().equals("📠"))
+                    str += board[i][j] + "  ";
                 else
                     str += board[i][j] + "  ";
             }
