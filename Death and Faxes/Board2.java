@@ -10,6 +10,7 @@ public class Board2
     int oCol;
     int end = -1; 
     boolean building;
+    int turn = 1;
     
     public Board2(int size)
     {
@@ -330,7 +331,7 @@ public class Board2
                     System.out.print("INVALID COMMAND");
                     System.out.println("");
                 }
-                System.out.print("MOVES LEFT: " + (board.length/3-take-i));
+                System.out.println("MOVES LEFT: " + (board.length/3-take-i));
                 System.out.println(this);
                 String c = sc.next();
                 if(c.equals("w") && getEne().getRow() != 0)
@@ -387,7 +388,7 @@ public class Board2
                     System.out.print("INVALID COMMAND");
                     System.out.println("");
                 }
-                System.out.print("MOVES LEFT: " + (board.length/4-take-i));
+                System.out.println("MOVES LEFT: " + (board.length/4-take-i));
                 System.out.print(this);
                 String c = sc.next();
                 if(c.equals("w") && getEne().getRow() != 0)
@@ -433,6 +434,7 @@ public class Board2
         }
         System.out.print("\u000C");
         System.out.print(this);
+        turn++;
     }   
     
     public void end(boolean p)
@@ -470,7 +472,9 @@ public class Board2
     
     public String toString() 
     {
-        String str = "\n   ";
+        String str = "\n";
+        str += "Turn: " + turn + "\n";
+        str += "\n   ";
         for(int i = 0; i < board.length; i++)
         {
             if(i+1 < 10)
