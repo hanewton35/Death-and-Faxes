@@ -21,7 +21,7 @@ public class You2 extends MovObj2
     public String toString()
     {
         if(board.one || eVis)
-            return "@";
+            return "🚶";
         return "*";
     }
 }

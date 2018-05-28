@@ -281,7 +281,10 @@ public class Board
                 str += i+1 + " ";
             for(int j = 0; j < board[0].length; j++)
             { 
-                str += board[i][j] + "  ";
+                if(board[i][j].toString().equals("🚶‍") || board[i][j].toString().equals("📠"))
+                    str += board[i][j] + "   ";
+                else
+                    str += board[i][j] + "  ";
             }
             str += "\n";
         }

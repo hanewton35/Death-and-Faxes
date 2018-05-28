@@ -18,6 +18,6 @@ public class You extends MovObj
     
     public String toString()
     {
-        return "@";
+        return "🚶";
     }
 }

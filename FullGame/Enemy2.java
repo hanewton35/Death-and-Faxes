@@ -17,7 +17,7 @@ public class Enemy2 extends MovObj2
     public String toString()
     {
         if(yVis || !board.one)
-            return "!";
+            return "📠";
         return "*";
     }
 }

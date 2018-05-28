@@ -193,7 +193,7 @@ public class Enemy extends MovObj
     public String toString()
     {
         if(super.yVis)
-            return "!";
+            return "📠";
         return "*";
     }
 }

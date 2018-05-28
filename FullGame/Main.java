@@ -8,6 +8,7 @@ public class Main
     {
         System.out.print("\u000C");
         sc = new Scanner(System.in);
+        System.out.println("DEATH AND FAXES");
         System.out.println("1. 1-Player");
         System.out.println("2. 2-Players");
         String a = sc.next();
