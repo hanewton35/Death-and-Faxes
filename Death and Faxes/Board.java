@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 
 public class Board
 {
+    int turn = 1; 
     Obj[][] board;
     Scanner sc = new Scanner(System.in);
     int end = -1; 
@@ -167,6 +168,7 @@ public class Board
     
     public void run()
     {
+        boolean a = true;
         String c = sc.next();
         if(c.equals("w") && getYou().getRow() != 0 && board[getYou().getRow()-1][getYou().getCol()] instanceof Empty)
         {
@@ -216,31 +218,46 @@ public class Board
         {
             place(new Empty(this, getYou().getRow(), getYou().getCol()-1), getYou().getRow(), getYou().getCol()-1);
         }
-        check();
-        if(getYou().almost)
+        else if(c.equals("q"))
         {
-            for(int i = 0; i < board.length/2; i++)
-            {
-                if(getEne().hunt())
-                {
-                    i = board.length/3;
-                }
-                check();
-            }
         }
         else
         {
-            for(int i = 0; i < board.length/3; i++)
-            {
-                if(getEne().hunt())
-                {
-                    i = board.length/4;
-                }
-                check();
-            }
+            a = false;
+            System.out.print("\u000C");
+            System.out.println("INVALID COMMAND");
+            System.out.print(this);
+            run();
         }
-        System.out.print(this);
-        System.out.print("\u000C");
+        if(a)
+        {
+            check();
+            if(getYou().almost)
+            {
+                for(int i = 0; i < board.length/2; i++)
+                {
+                    if(getEne().hunt())
+                    {
+                        i = board.length/3;
+                    }
+                    check();
+                }
+            }
+            else
+            {
+                for(int i = 0; i < board.length/3; i++)
+                {
+                    if(getEne().hunt())
+                    {
+                        i = board.length/4;
+                    }
+                    check();
+                }
+            }
+            System.out.print(this);
+            System.out.print("\u000C");
+            turn++;
+        }
     }
     
     public void end(boolean p)
@@ -280,7 +297,9 @@ public class Board
     
     public String toString() 
     {
-        String str = "\n   ";
+        String str = "\n";
+        str += "Turn: " + turn + "\n";
+        str += "\n   ";
         for(int i = 0; i < board.length; i++)
         {
             if(i+1 < 10)

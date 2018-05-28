@@ -241,9 +241,9 @@ public class Board2
     
     public void run()
     {
+        boolean a = true;
         one = true;
         check();
-        System.out.print(this);
         String c = sc.next();
         if(c.equals("w") && getYou2().getRow() != 0 && board[getYou2().getRow()-1][getYou2().getCol()] instanceof Empty2)
         {
@@ -293,25 +293,45 @@ public class Board2
         {
             place(new Empty2(this, getYou2().getRow(), getYou2().getCol()-1), getYou2().getRow(), getYou2().getCol()-1);
         }
-        check();
-        System.out.print("\u000C");
-        System.out.print(this);
+        else if(c.equals("q"))
+        {
+        }
+        else
+        {
+            a = false;
+            System.out.print("\u000C");
+            System.out.println("INVALID COMMAND");
+            System.out.print(this);
+            run();
+        }
+        if(a)
+        {
+            check();
+            System.out.print("\u000C");
+            System.out.print(this);
+        }
     }
     
-    public void run2()
+    public void run2(int take, boolean inv)
     {
+        boolean a = true;
         System.out.print("\u000C");
         one = false;
         if(getYou2().almost)
         {
-            for(int i = 0; i < board.length/3; i++)
+            for(int i = 0; i < board.length/3-take; i++)
             {
                 if(end != -1)
                     i = board.length/4;
                 else{
                 System.out.print("\u000C");
-                System.out.print("MOVES LEFT: " + (board.length/3-i));
-                System.out.print(this);
+                if(inv)
+                {
+                    System.out.print("INVALID COMMAND");
+                    System.out.println("");
+                }
+                System.out.print("MOVES LEFT: " + (board.length/3-take-i));
+                System.out.println(this);
                 String c = sc.next();
                 if(c.equals("w") && getEne().getRow() != 0)
                 {
@@ -340,19 +360,34 @@ public class Board2
                     {
                         i = board.length;
                     }
+                }
+                else if(c.equals("q"))
+                {
+                    i = board.length;
+                }
+                else
+                {
+                    int f = i;
+                    i = board.length;
+                    run2(take+f, true);
                 }
                 check();}
             }
         }
         else
         {
-            for(int i = 0; i < board.length/4; i++)
+            for(int i = 0; i < board.length/4-take; i++)
             {
                 if(end != -1)
                     i = board.length/4;
                 else{
                 System.out.print("\u000C");
-                System.out.print("MOVES LEFT: " + (board.length/4-i));
+                if(inv)
+                {
+                    System.out.print("INVALID COMMAND");
+                    System.out.println("");
+                }
+                System.out.print("MOVES LEFT: " + (board.length/4-take-i));
                 System.out.print(this);
                 String c = sc.next();
                 if(c.equals("w") && getEne().getRow() != 0)
@@ -382,6 +417,16 @@ public class Board2
                     {
                         i = board.length;
                     }
+                }
+                else if(c.equals("q"))
+                {
+                    i = board.length;
+                }
+                else
+                {
+                    int f = i;
+                    i = board.length;
+                    run2(take+f, true);
                 }
                 check();}
             }

@@ -28,7 +28,10 @@ public class Tester2
         while(b.end == -1)
         {
             System.out.print("\u000C");
+            System.out.print(b);
+            b.one = true;
             b.run();
+            b.one = false;
             if(b.end == -1)
             {
                 System.out.print("ENTER ANYTHING TO END TURN");
@@ -37,7 +40,9 @@ public class Tester2
                 System.out.println("PLAYER2's Turn");
                 System.out.println("ENTER ANYTHING TO START TURN");
                 String z = sc.next();
-                b.run2();
+                b.one = false;
+                b.run2(0, false);
+                b.one = true;
                 if(b.end == -1)
                 {
                     System.out.print("ENTER ANYTHING TO END TURN");

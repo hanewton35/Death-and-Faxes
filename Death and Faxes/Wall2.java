@@ -7,7 +7,7 @@ public class Wall2 extends Obj2
     
     public String toString()
     {
-        if(board.building || eVis || (board.one && yVis))
+        if(board.building || (!board.one && eVis) || (board.one && yVis))
             return "█";
         return "*";
     }

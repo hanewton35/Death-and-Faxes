@@ -2,8 +2,8 @@
 comment0.target=Board2
 comment1.params=size
 comment1.target=Board2(int)
-comment10.params=
-comment10.target=void\ run2()
+comment10.params=take\ inv
+comment10.target=void\ run2(int,\ boolean)
 comment11.params=p
 comment11.target=void\ end(boolean)
 comment12.params=
