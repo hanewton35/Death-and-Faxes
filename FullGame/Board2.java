@@ -421,14 +421,7 @@ public class Board2
                 str += i+1 + " ";
             for(int j = 0; j < board[0].length; j++)
             { 
-                if(board[i][j].toString().equals("🚶‍"))
-                    str += board[i][j] + "   ";
-                else if(board[i][j].toString().equals("█"))
-                    str += board[i][j] + "    ";
-                else if(board[i][j].toString().equals("📠"))
-                    str += board[i][j] + "  ";
-                else
-                    str += board[i][j] + "  ";
+                str += board[i][j] + "  ";
             }
             str += "\n";
         }
