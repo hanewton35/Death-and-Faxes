@@ -57,6 +57,7 @@ public class Main
             System.out.println("   Your Objective is to reach the bottom-\nright corner without being caught by the fax\nmachine.");
             System.out.println("");
             System.out.println("Commands:");
+            System.out.println("   e-exit entire game");
             System.out.println("   q-skip turn");
             System.out.println("   w-move up");
             System.out.println("   a-move left");

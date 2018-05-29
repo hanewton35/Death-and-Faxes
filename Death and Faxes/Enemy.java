@@ -25,33 +25,33 @@ public class Enemy extends MovObj
             double e = Math.random();
             if(timer > 0)
             {
+                timer--;
                 if(e < .25 && row != 0 && lastLoc == 2)
-                    up();
+                    return up();
                 else if(e < .5 && col != board.board.length-1 && lastLoc == 6)
-                    right();
+                    return right();
                 else if(e < .75 && row != board.board.length-1 && lastLoc == 8)
-                    down();
+                    return down();
                 else if(col != 0 && lastLoc == 4)
-                    left();
+                    return left();
                 else
-                    hunt();
+                    return hunt();
             }
             else
             {
+                timer--;
                 if(e < .25 && row != 0)
-                    up();
+                    return up();
                 else if(e < .5 && col != board.board.length-1)
-                    right();
+                    return right();
                 else if(e < .75 && row != board.board.length-1)
-                    down();
+                    return down();
                 else if(col != 0)
-                    left();
+                    return left();
                 else
-                    hunt();
+                    return hunt();
             }
-            timer--;
         }
-        return false;
     }
     
     public boolean chase()
